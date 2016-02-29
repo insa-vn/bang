@@ -9,7 +9,7 @@ source virtualenv/bin/activate
 
 2. Download dependencies
 ```shell
-pip install websocket-client
+pip install -U socketIO-client
 ```
 
 3. Launch the app

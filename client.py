@@ -1,9 +1,7 @@
-from websocket import create_connection
-ws = create_connection("ws://echo.websocket.org/")
-print "Sending 'Hello, World'..."
-ws.send("Hello, World")
-print "Sent"
-print "Receiving..."
-result =  ws.recv()
-print "Received '%s'" % result
-ws.close()
+from socketIO_client import SocketIO, LoggingNamespace
+
+def on_response(*args):
+    print('Response from Bang server: ' + args[0])
+with SocketIO('localhost', 5000, LoggingNamespace) as socketIO:
+    socketIO.emit('hoang sida', {'message': 'Lieu hoang co bi benh sida ? '}, on_response)
+    socketIO.wait_for_callbacks(seconds=1)
